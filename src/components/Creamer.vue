@@ -1,10 +1,12 @@
 <template>
-  <div class="froth">
+  <div class="froth" :style="{ '--base-color': currentCreamer.color }">
     <div v-for=" in 5" class="foam"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {currentCreamer} from "../stores/beverage.ts";
+</script>
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
@@ -17,7 +19,7 @@
 }
 .foam {
   display: block;
-  background: #e4e0d2;
+  background: var(--base-color);
   border-radius: 30px;
   height: 40px;
   width: 40px;
@@ -25,12 +27,12 @@
 }
 
 .foam:nth-child(1) {
-  top: 0px;
+  top: 0;
   left: -3px;
 }
 
 .foam:nth-child(2) {
-  top: 0px;
+  top: 0;
   left: 55px;
 }
 
