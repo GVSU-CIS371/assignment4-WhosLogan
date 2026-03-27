@@ -1,9 +1,11 @@
 <template>
-  <div class="baseBeverage" :style="{ '--base-color': currentBase.color }"></div>
+  <div class="baseBeverage" :style="{ '--base-color': store.currentBase.color }"></div>
 </template>
 
 <script setup lang="ts">
-import {currentBase} from "../stores/beverage.ts";
+import {useBeverageStore} from "../stores/beverageStore.ts";
+
+const store = useBeverageStore();
 </script>
 
 <style scoped>

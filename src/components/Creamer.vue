@@ -1,11 +1,13 @@
 <template>
-  <div class="froth" :style="{ '--base-color': currentCreamer.color }">
+  <div class="froth" :style="{ '--base-color': store.currentCreamer.color }">
     <div v-for=" in 5" class="foam"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {currentCreamer} from "../stores/beverage.ts";
+import {useBeverageStore} from "../stores/beverageStore.ts";
+
+const store = useBeverageStore();
 </script>
 <style lang="scss" scoped>
 .froth {

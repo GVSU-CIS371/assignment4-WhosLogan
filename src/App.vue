@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Beverage :isIced="currentTemp === 'Cold'" />
+    <Beverage :isIced="store.currentTemp === 'Cold'" />
     <ul>
       <li>
-        <template v-for="temp in temps" :key="temp">
+        <template v-for="temp in store.temps" :key="temp">
           <label>
             <input
                 type="radio"
                 name="temperature"
                 :id="`r${temp}`"
                 :value="temp"
-                v-model="currentTemp"
+                v-model="store.currentTemp"
             />
             {{ temp }}
           </label>
@@ -18,14 +18,14 @@
       </li>
 
       <li>
-        <template v-for="base in bases" :key="base">
+        <template v-for="base in store.bases" :key="base">
           <label>
             <input
                 type="radio"
                 name="base"
                 :id="`r${base.id}`"
                 :value="base"
-                v-model="currentBase"
+                v-model="store.currentBase"
             />
             {{ base.name }}
           </label>
@@ -33,14 +33,14 @@
       </li>
 
       <li>
-        <template v-for="creamer in creamers" :key="creamer.id">
+        <template v-for="creamer in store.creamers" :key="creamer.id">
           <label>
             <input
                 type="radio"
                 name="creamer"
                 :id="`r${creamer.id}`"
                 :value="creamer"
-                v-model="currentCreamer"
+                v-model="store.currentCreamer"
             />
             {{ creamer.name }}
           </label>
@@ -48,14 +48,14 @@
       </li>
 
       <li>
-        <template v-for="syrup in syrups" :key="syrups.id">
+        <template v-for="syrup in store.syrups" :key="store.syrups.id">
           <label>
             <input
                 type="radio"
                 name="syrup"
                 :id="`r${syrup.id}`"
                 :value="syrup"
-                v-model="currentSyrup"
+                v-model="store.currentSyrup"
             />
             {{ syrup.name }}
           </label>
@@ -63,13 +63,16 @@
       </li>
     </ul>
     <input type="text" placeholder="Beverage Name" />
-    <button>🍺 Make Beverage</button>
+    <button>Make Beverage</button>
   </div>
   <div id="beverage-container" style="margin-top: 20px"></div>
 </template>
 
 <script setup lang="ts">
+import {useBeverageStore} from "./stores/beverageStore.ts";
 import Beverage from "./components/Beverage.vue";
+
+const store = useBeverageStore();
 </script>
 
 <style lang="scss">
